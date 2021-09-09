@@ -1,15 +1,16 @@
 import 'model.dart';
 import 'dart:convert';
 class Message{
+  int id;
   String msg;
-  User user;
+  User msgFrom;
 
-  Message({this.msg,this.user});
+  Message({this.msg,this.msgFrom});
 
   factory Message.fromJson(Map<String,dynamic>json){
      return Message(
          msg:json["msg"],
-         user:User.fromJson(json["user_id"]),
+         msgFrom:User.fromJson(json["user_id"]),
      );
   }
 }

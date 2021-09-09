@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class User{
+  int id;
   String firstName;
   String lastName;
   String email;
