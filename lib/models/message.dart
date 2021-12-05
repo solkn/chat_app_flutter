@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 import 'model.dart';
 import 'dart:convert';
 class Message{
@@ -5,10 +7,11 @@ class Message{
   String msg;
   User msgFrom;
 
-  Message({this.msg,this.msgFrom});
+  Message({@required this.id,@required this.msg,@required this.msgFrom});
 
   factory Message.fromJson(Map<String,dynamic>json){
      return Message(
+         id:json["id"],
          msg:json["msg"],
          msgFrom:User.fromJson(json["user_id"]),
      );

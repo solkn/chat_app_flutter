@@ -1,6 +1,9 @@
 import 'package:chat_app/bloc/auth/auth.dart';
 import 'package:chat_app/models/model.dart';
+import 'package:chat_app/screens/custom_button.dart';
 import 'package:chat_app/screens/home_screen.dart';
+import 'package:chat_app/screens/signup_screen.dart';
+import 'package:chat_app/screens/user_home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,11 +32,10 @@ class LoginScreenState extends State<LoginScreen>{
           key: _formKey,
           child: BlocConsumer<AuthBloc,AuthStates>(
             listener: (context,state){
+
               if(state is LoginSuccessState){
                   Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
                 }
-
-
             },
             builder:(context,state){
               return Column(
@@ -76,7 +78,10 @@ class LoginScreenState extends State<LoginScreen>{
 
                     },
                     decoration: const InputDecoration(
-                      hintText: "enter email",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.elliptical(50,50)),
+                      ),
+                      hintText: "email",
                     ),
 
 
@@ -93,37 +98,33 @@ class LoginScreenState extends State<LoginScreen>{
 
                     },
                    decoration: const InputDecoration(
-                     hintText: "enter password",
+                     border: OutlineInputBorder(
+                       borderRadius: BorderRadius.all(Radius.elliptical(50,50)),
+                     ),
+                     hintText: "password",
                    ),
 
                   ),
                   SizedBox(
                     height: 10.0,
                   ),
-                  FlatButton(
-                    onPressed: () {
-                      final form = _formKey.currentState;
-                      if (!form.validate()) {
-                        return;
-                      }
-                      User user =
-                      new User(email: email, password: password);
-                      LoginEvent loginEvent = new LoginEvent(user: user);
-                      BlocProvider.of<AuthBloc>(context).add(loginEvent);
-                    },
-                    child: Text("Login"),
-                  ),
-                  SizedBox(
-                    height: 50.0,
-                    child: Container(
-                      //padding: EdgeInsets.symmetric(horizontal: 100.0),
-                      margin: EdgeInsets.symmetric(horizontal: 60.0),
-                      decoration: BoxDecoration(
-                        color: Colors.yellow,
-                      ),
-                    ),
-                  ),
 
+                  CustomButton(
+                     title: "Login",
+                     color: Colors.blueAccent,
+                     onPressed: () {
+                       final form = _formKey.currentState;
+                       if(!form.validate()) {
+                         return;
+              }
+
+                       User user = new User(email: email,password: password);
+                       LoginEvent loginEvent = new LoginEvent(user: user);
+                       BlocProvider.of<AuthBloc>(context).add(loginEvent);
+
+                       Navigator.of(context).pushReplacementNamed(UserHomeScreen.routeName);
+              }
+              ),
 
                 ],
               );

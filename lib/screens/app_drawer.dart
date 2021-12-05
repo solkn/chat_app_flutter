@@ -32,9 +32,19 @@ class AppDrawer extends StatelessWidget {
 
                     ),
                   ),
-                  Text("Solomon Kindie",
-                    style: TextStyle(
-                        color: Colors.purpleAccent,fontSize: 25,fontStyle: FontStyle.italic),
+                  Column(
+                    children: <Widget>[
+                      Text("Solomon ",
+                      style: TextStyle(
+                        color: Colors.blueAccent,fontSize: 25,
+                        fontStyle: FontStyle.italic),
+                      ),
+                      Text("+251943550992",
+                        style: TextStyle(
+                            color: Colors.blueAccent,fontSize: 15,
+                            fontStyle: FontStyle.italic),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -50,6 +60,41 @@ class AppDrawer extends StatelessWidget {
             Divider(),
 
             Divider(),
+            ListTile(
+              leading: Icon(Icons.group_add),
+              title: Text("New Group"),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.group_add),
+              title: Text("New Channel"),
+              onTap: () {},
+            ),
+
+            Divider(),
+
+            ListTile(
+              leading: Icon(Icons.contact_phone),
+              title: Text("contacts"),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.contact_phone_rounded),
+              title: Text("online contacts"),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.call),
+              title: Text("call"),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text("settings"),
+              onTap: () {},
+            ),
+            Divider(),
+
             ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text('Logout'),
